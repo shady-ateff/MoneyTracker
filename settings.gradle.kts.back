@@ -1,0 +1,46 @@
+pluginManagement {
+    val flutterSdkPath = runCatching {
+        val properties = java.util.Properties()
+        val file = File(settingsDir, "flutter_module/.android/local.properties")
+        if (file.exists()) {
+            properties.load(file.inputStream())
+            properties.getProperty("flutter.sdk")
+        } else null
+    }.getOrNull()
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven(url = "https://storage.googleapis.com/download.flutter.io")
+        if (flutterSdkPath != null) {
+            maven(url = "$flutterSdkPath/packages/flutter_tools/gradle")
+        }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "dev.flutter.flutter-gradle-plugin") {
+                // بنقوله استخدم المكتبة دي بأحدث إصدار (+)
+                useModule("dev.flutter:flutter-gradle-plugin:+")
+            }
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven(url = "https://storage.googleapis.com/download.flutter.io")
+    }
+}
+
+rootProject.name = "Money Tracker"
+include(":app")
+
+// ============================================================
+// الربط اليدوي للموديول (عشان إحنا شغالين Kotlin DSL)
+// ============================================================
+include(":flutter_module")
+project(":flutter_module").projectDir = File(settingsDir, "flutter_module/.android/Flutter")

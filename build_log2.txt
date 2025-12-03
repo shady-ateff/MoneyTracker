@@ -1,0 +1,38 @@
+﻿Starting a Gradle Daemon, 12 stopped Daemons could not be reused, use --status for details
+
+> Configure project :app
+.\gradlew : e: file:///C:/Users/22/StudioProjects/MoneyTracker/
+app/build.gradle.kts:80:5: Unresolved reference: 
+profileImplementation
+At line:1 char:1
++ .\gradlew :app:assembleDebug *>&1 | Out-File -Encoding UTF8 
+-FilePath ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (e: file:///C:/U.. 
+   .eImplementation:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 
+'C:\Users\22\StudioProjects\MoneyTracker\app\build.gradle.kts' 
+line: 80
+
+* What went wrong:
+Script compilation error:
+
+  Line 80:     profileImplementation("com.example.flutter_modul
+e:flutter_profile:1.0")
+               ^ Unresolved reference: profileImplementation
+
+1 error
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 13s
