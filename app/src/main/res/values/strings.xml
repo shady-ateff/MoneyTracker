@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Money Tracker</string>
+    <!-- Replace with your Web Client ID from Firebase Console -->
+    <!-- Go to: Firebase Console > Project Settings > Your apps > Web app > Web client ID -->
+    <string name="default_web_client_id">626217974658-ai0pufb24vmfqglva5va630111k7vo89.apps.googleusercontent.com</string>
 </resources>

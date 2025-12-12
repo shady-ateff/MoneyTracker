@@ -3,27 +3,25 @@ package com.example.moneytracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
-import com.example.moneytracker.ui.ExpenseScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.moneytracker.navigation.AppNavigation
 import com.example.moneytracker.ui.theme.MoneyTrackerTheme
-import com.example.moneytracker.viewmodel.ExpenseViewModel
-import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: ExpenseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MoneyTrackerTheme {
-                ExpenseScreen(
-                    viewModel = viewModel,
-                    onVisualizeClick = {
-                        // Integration Snippet: Launch Flutter Activity
-                        startActivity(
-                            FlutterActivity.createDefaultIntent(this)
-                        )
-                    }
+                val navController = rememberNavController()
+                
+                // Replace with your actual Web Client ID from Firebase Console
+                // Go to: Firebase Console > Project Settings > Your apps > Web app > Web client ID
+                val webClientId = getString(R.string.default_web_client_id)
+                
+                AppNavigation(
+                    navController = navController,
+                    webClientId = webClientId
                 )
             }
         }
